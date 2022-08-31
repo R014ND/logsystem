@@ -1,0 +1,31 @@
+.navbar-wrapper{
+
+}
+
+.navbar-wrapper ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.navbar-wrapper ul li{
+    float: left;
+}
+
+.navbar-wrapper ul li a{
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.navbar-wrapper ul li a:hover{
+    background-color: grey;
+    text-decoration: none;
+}
+
+#active{
+    color: grey;
+}
