@@ -114,6 +114,7 @@
             $_SESSION["userId"] = $uidExists["usersId"];
             $_SESSION["userName"] = $uidExists["usersName"];
             $_SESSION["userUid"] = $uidExists["usersUid"];
+            $_SESSION["userType"] = $uidExists["userType"];
             header("location: ../index.php?success");
             echo $_SESSION["userUid"];
             exit();
