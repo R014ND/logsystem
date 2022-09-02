@@ -150,7 +150,7 @@
         $stmt = mysqli_stmt_init($conn);
         
         if(!mysqli_stmt_prepare($stmt, $sql)){
-            header("location: ../newproject.php?error=stmtfailed");
+            header("location: ../addusers.php?error=stmtfailed");
             exit();
         }
 
