@@ -73,6 +73,8 @@
     }
     //-------------------------
 
+    //Create  user
+
     function createUser($conn, $name, $uid, $pwd, $isAdmin){
         $sql = "INSERT INTO users (usersName, usersUid, usersPassword, userType) VALUES (?, ?, ?, ?);";
         
@@ -92,6 +94,8 @@
         header("location: ../addusers.php?error=none");
         exit();
     }
+
+    //Login
 
     function loginUser($conn, $uid, $pwd){
         
@@ -119,4 +123,41 @@
             echo $_SESSION["userUid"];
             exit();
         }
+    }
+
+    //Project
+
+    function emptyInputProject($name, $desc, $user){
+        $result;
+        if(empty($name) || empty($desc) || empty($user)){
+            $result = true;
+        }
+        else{
+            $result = false;
+        }
+        return $result;
+    }
+
+    function createProject($conn, $name, $desc, $user){
+        
+        $sql1 = "SELECT * FROM users WHERE usersName = '$user';";
+                
+        $result = mysqli_query($conn, $sql1);
+        $row = mysqli_fetch_assoc($result);
+
+        $sql = "INSERT INTO projects (projectName, projectUser, projectDescription) VALUES (?, ?, ?);";
+        
+        $stmt = mysqli_stmt_init($conn);
+        
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            header("location: ../newproject.php?error=stmtfailed");
+            exit();
+        }
+
+        mysqli_stmt_bind_param($stmt, "sss", $name, $row["usersId"], $desc);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+
+        header("location: ../newproject.php?error=none");
+        exit();
     }

@@ -1,7 +1,9 @@
 <li><a href="index.php">Index</a></li>
 <?php
     if("admin" === $_SESSION["userType"]) : ?>
+        <li><a href="projects.php">Projects</a></li>
         <li><a href="addusers.php">Add users</a></li>
+        <li><a href="newproject.php">New project</a></li>
     <?php endif; ?>
     
     <li>
