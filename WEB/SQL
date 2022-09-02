@@ -1,5 +1,5 @@
 az adatbázis neve 'test'
-a tábla sql kódja:
+a táblák sql kódja:
 
 
 CREATE TABLE users (
@@ -8,4 +8,13 @@ CREATE TABLE users (
 	usersUid varchar(128) NOT NULL,
 	usersPassword varchar(128) NOT NULL,
 	userType varchar(10) NOT NULL
+) COLLATE ascii_bin
+
+projects tábla:
+
+CREATE TABLE projects (
+	projectId int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	projectName varchar(128) NOT NULL,
+	projectUser int(11) NOT NULL,
+	projectDescription varchar(128) NOT NULL
 ) COLLATE ascii_bin
